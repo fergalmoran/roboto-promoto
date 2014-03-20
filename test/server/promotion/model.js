@@ -10,24 +10,24 @@ var user;
 
 describe('Promotion Model', function() {
     before(function(done) {
-        user = new User({
-            provider: 'local',
-            name: 'Fake User',
-            email: 'test@test.com',
-            password: 'password'
-        });
-        promotion = new Promotion({
-            title: 'Test Prom 1',
-            user: user
-        });
-        promotion2 = new Promotion({
-            title: 'Test Prom 1',
-            user: user
-        });
-        // Clear promotions before testing
-        Promotion.remove().exec();
-        User.remove().exec();
-        done();
+            user = new User({
+                provider: 'local',
+                name: 'Fake User',
+                email: 'test@test.com',
+                password: 'password'
+            });
+            promotion = new Promotion({
+                title: 'Test Prom 1',
+                user: user
+            });
+            promotion2 = new Promotion({
+                title: 'Test Prom 1',
+                user: user
+            });
+            // Clear promotions before testing
+            Promotion.remove().exec();
+            User.remove().exec();
+            done();
     });
 
     afterEach(function(done) {
@@ -75,6 +75,7 @@ describe('Promotion Model', function() {
     });
     describe('Search methods', function(){
         it('should find promotion by title', function(done){
+            debugger;
             Promotion.findByTitle('Test Prom 1', function(result){
                 should.exist(result);
                 result.title.should.equal('Test Prom 1');
