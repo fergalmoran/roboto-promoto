@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('robotoApp')
+angular.module('robotoPromotoApp')
 
   /**
    * Removes server error when user updates input

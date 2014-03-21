@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('robotoApp')
+angular.module('robotoPromotoApp')
   .factory('User', function ($resource) {
     return $resource('/api/users/:id', {
       id: '@id'

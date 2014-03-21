@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('robotoApp')
+angular.module('robotoPromotoApp')
   .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
     
     // Get currentUser from cookie

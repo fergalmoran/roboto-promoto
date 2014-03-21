@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('robotoApp', [
+angular.module('robotoPromotoApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -24,6 +24,10 @@ angular.module('robotoApp', [
         templateUrl: 'partials/settings',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .when('/promotions', {
+        templateUrl: 'partials/promotions',
+        controller: 'PromotionsCtrl'
       })
       .otherwise({
         redirectTo: '/'

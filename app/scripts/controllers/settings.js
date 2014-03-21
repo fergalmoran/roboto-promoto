@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('robotoApp')
+angular.module('robotoPromotoApp')
   .controller('SettingsCtrl', function ($scope, User, Auth) {
     $scope.errors = {};
 

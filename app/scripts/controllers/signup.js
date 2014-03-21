@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('robotoApp')
+angular.module('robotoPromotoApp')
   .controller('SignupCtrl', function ($scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
