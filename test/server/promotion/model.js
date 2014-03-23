@@ -24,16 +24,16 @@ describe('Promotion Model', function () {
             title: 'Test Prom 1',
             user: user
         });
-        // Clear promotions before testing
-        Promotion.remove().exec();
         User.remove().exec();
+        Promotion.remove().exec();
         done();
     });
 
-    afterEach(function (done) {
+    after(function (done) {
         //going to leave the data intact post test
         //as it is removed in before()
-        //Promotion.remove().exec();
+        Promotion.remove().exec();
+        User.remove().exec();
         done();
     });
 
@@ -50,6 +50,15 @@ describe('Promotion Model', function () {
                 done();
             });
         });
+        it('should fail when saving a duplicate promotion', function (done) {
+            promotion.save(function (err) {
+                should.not.exist(err);
+                promotion2.save(function (err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+        });
         it('should fail when saving without a user', function (done) {
             promotion.user = '';
             promotion.save(function (err) {
@@ -64,14 +73,7 @@ describe('Promotion Model', function () {
                 done();
             });
         });
-        it('should fail when saving a duplicate promotion', function (done) {
-            promotion.save(function (err) {
-                promotion2.save(function (err) {
-                    should.exist(err);
-                    done();
-                });
-            });
-        });
+
     });
     describe('Search methods', function () {
         it('should find promotion by title', function (done) {
