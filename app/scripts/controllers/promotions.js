@@ -11,12 +11,11 @@ angular.module('robotoPromotoApp')
             pageSizes: [5, 10, 20],
             pageSize: 5,
             currentPage: 1
-        }
+        };
 
-        $scope.setPagingData = function(data, page, pageSize){
-            var pagedData = data.slice((page-1) * pageSize, page * pageSize);
-            $scope.promotionData = pagedData;
-            $scope.totalServerItems = data.length;
+        $scope.setPagingData = function(data, total){
+            $scope.promotionData = data;
+            $scope.totalServerItems = total;
             if (!$scope.$$phase){
                 $scope.$apply();
             }
@@ -27,10 +26,10 @@ angular.module('robotoPromotoApp')
                 if (searchText){
                     var ft = searchText.toLowerCase();
                 }else{
-                    $http.get('api/promotions')
-                    .success(function (promotions) {
-                        $scope.setPagingData(promotions, page, pageSize);
-                    });
+                    $http.get('api/promotion?sort=created&limit=' + pageSize + '&skip=' + pageSize * (page-1))
+                        .success(function (promotions) {
+                            $scope.setPagingData(promotions.payload, promotions.total);
+                        });
                 }
             }, 3000);
         };

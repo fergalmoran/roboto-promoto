@@ -33,23 +33,23 @@ describe('Promotions Api', function(){
                 });
         });
     });
-    describe('GET /api/promotions', function () {
+    describe('GET /api/promotion', function () {
         it('should respond with JSON array', function (done) {
             request(app)
-                .get('/api/promotions')
+                .get('/api/promotion')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .end(function (err, res) {
                     if (err) return done(err);
-                    res.body.should.be.instanceof(Array);
+                    res.body.payload.should.be.instanceof(Array);
                     done();
                 });
         });
     });
-    describe('POST /api/promotions', function () {
+    describe('POST /api/promotion', function () {
         it('should respond with the item POSTed', function (done) {
             request(app)
-                .post('/api/promotions')
+                .post('/api/promotion')
                 .send({
                     title: 'API - Test 2',
                     user: auth

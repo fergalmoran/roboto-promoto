@@ -27,7 +27,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 // Populate empty DB with sample data
-require('./lib/config/dummydata');
+//require('./lib/config/dummydata');
   
 // Passport Configuration
 var passport = require('./lib/config/passport');
@@ -39,6 +39,7 @@ require('./lib/config/express')(app);
 
 // Routing
 require('./lib/routes')(app);
+
 
 // Start server
 app.listen(config.port, function () {
