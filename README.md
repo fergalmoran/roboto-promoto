@@ -1,4 +1,4 @@
 roboto-promoto
 ==============
 
-(nodejs) roboto
+Robot Powered Promotions
