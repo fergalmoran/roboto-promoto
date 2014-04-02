@@ -4,8 +4,7 @@ angular.module('robotoPromotoApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute',
-    'ngGrid'
+    'ngRoute'
 ])
     .config(function ($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider

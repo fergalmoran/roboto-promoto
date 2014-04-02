@@ -22,7 +22,7 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/ui-grid/ng-grid.css">
+    <link rel="stylesheet" href="scripts/bs/plugins/select2/select2.css">
     <!-- endbuild -->
 </head>
 <body ng-app="robotoPromotoApp">
@@ -34,12 +34,29 @@
 
 <div id="main" class="container-fluid">
     <div class="row">
-        <div id="sidebar-left" ng-controller="NavbarCtrl" class="col-xs-2 col-sm-2">
+        <div id="sidebar-left" ng-include src="'partials/navbar.html'" class="col-xs-2 col-sm-2"></div>
+        <div id="content" class="col-xs-12 col-sm-10">
+            <div class="preloader" style="display: none;">
+                <img src="/images/bs/devoops_getdata.gif" class="devoops-getdata" alt="preloader">
+            </div>
+            <div id="ajax-content">
+                <div class="row">
+                    <div id="breadcrumb" class="col-xs-12 col-sm-12">
+                        <ol class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="">{{ currentPage.description }}</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                    </div>
+                </div>
+                <div class="row" ng-view=""></div>
+            </div>
         </div>
-        <div id="content" ng-view="" class="col-xs-12 col-sm-10"></div>
     </div>
 </div>
-
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -56,10 +73,19 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
-<script src="bower_components/ui-grid/ng-grid.js"></script>
 
+<!-- bs stuff -->
+<script src="scripts/bs/plugins/morris/morris.js"></script>
+<script src="scripts/bs/plugins/raphael/raphael.js"></script>
+<script src="scripts/bs/plugins/sparkline/jquery.sparkline.js"></script>
+<script src="scripts/bs/plugins/datatables/jquery.dataTables.js"></script>
+<script src="scripts/bs/plugins/datatables/ZeroClipboard.js"></script>
+<script src="scripts/bs/plugins/datatables/TableTools.js"></script>
+<script src="scripts/bs/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="scripts/bs/plugins/select2/select2.js"></script>
+
+<!-- end bs stuff -->
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/bs/bs.js"></script>
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/header.js"></script>
@@ -72,6 +98,8 @@
 <script src="scripts/services/session.js"></script>
 <script src="scripts/services/user.js"></script>
 <script src="scripts/directives/mongooseError.js"></script>
+<script src="scripts/directives/dataTables.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

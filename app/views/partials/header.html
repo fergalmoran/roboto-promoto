@@ -1,4 +1,4 @@
-<header class="navbar">
+<header class="navbar" ng-controller="HeaderCtrl">
     <div class="container-fluid expanded-panel">
         <div class="row">
             <div id="logo" class="col-xs-12 col-sm-2">
@@ -10,14 +10,16 @@
                         <a href="#" class="show-sidebar">
                             <i class="fa fa-bars"></i>
                         </a>
-
                         <div id="search">
                             <input type="text" placeholder="search">
                             <i class="fa fa-search"></i>
                         </div>
                     </div>
                     <div class="col-xs-4 col-sm-8 top-panel-right">
-                        <ul class="nav navbar-nav pull-right panel-menu">
+                        <ul class="nav navbar-nav pull-right panel-menu" ng-hide="currentUser">
+                            <a href="/login" class="modal-link">Login</a>
+                        </ul>
+                        <ul class="nav navbar-nav pull-right panel-menu" ng-show="currentUser">
                             <li class="hidden-xs">
                                 <a href="index.html" class="modal-link">
                                     <i class="fa fa-bell"></i>
@@ -45,7 +47,7 @@
 
                                     <div class="user-mini pull-right">
                                         <span class="welcome">Welcome,</span>
-                                        <span>Jane Devoops</span>
+                                        <span>{{ currentUser.name }}</span>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu">
